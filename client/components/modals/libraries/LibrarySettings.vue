@@ -29,6 +29,12 @@
         <p class="pl-4 text-base">{{ $strings.LabelSettingsSkipMatchingBooksWithISBN }}</p>
       </div>
     </div>
+    <div v-if="mediaType == 'book'" class="py-3">
+      <div class="flex items-center">
+        <ui-toggle-switch v-model="ebookAsASupplement" @input="formUpdated" />
+        <p class="pl-4 text-base">{{ $strings.LabelSettingsEbookAsASupplement }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -47,7 +53,8 @@ export default {
       useSquareBookCovers: false,
       disableWatcher: false,
       skipMatchingMediaWithAsin: false,
-      skipMatchingMediaWithIsbn: false
+      skipMatchingMediaWithIsbn: false,
+      ebookAsASupplement: false
     }
   },
   computed: {
@@ -72,7 +79,8 @@ export default {
           coverAspectRatio: this.useSquareBookCovers ? this.$constants.BookCoverAspectRatio.SQUARE : this.$constants.BookCoverAspectRatio.STANDARD,
           disableWatcher: !!this.disableWatcher,
           skipMatchingMediaWithAsin: !!this.skipMatchingMediaWithAsin,
-          skipMatchingMediaWithIsbn: !!this.skipMatchingMediaWithIsbn
+          skipMatchingMediaWithIsbn: !!this.skipMatchingMediaWithIsbn,
+          ebookAsASupplement: !!this.ebookAsASupplement
         }
       }
     },
@@ -84,6 +92,7 @@ export default {
       this.disableWatcher = !!this.librarySettings.disableWatcher
       this.skipMatchingMediaWithAsin = !!this.librarySettings.skipMatchingMediaWithAsin
       this.skipMatchingMediaWithIsbn = !!this.librarySettings.skipMatchingMediaWithIsbn
+      this.ebookAsASupplement = !!this.librarySettings.ebookAsASupplement
     }
   },
   mounted() {

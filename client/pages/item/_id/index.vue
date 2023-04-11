@@ -190,7 +190,8 @@
 
             <ui-btn v-if="showReadButton" color="info" :padding-x="4" small class="flex items-center h-9 mr-2" @click="openEbook">
               <span class="material-icons text-2xl -ml-2 pr-2 text-white">auto_stories</span>
-              {{ $strings.ButtonRead }}
+              <span v-if="ebookAsASupplement">{{ $strings.ButtonSupplement }}</span>
+              <span v-else>{{ $strings.ButtonRead }}</span>
             </ui-btn>
 
             <ui-tooltip v-if="userCanUpdate" :text="$strings.LabelEdit" direction="top">
@@ -358,6 +359,9 @@ export default {
     },
     showReadButton() {
       return this.ebookFile && (this.showExperimentalFeatures || this.enableEReader)
+    },
+    ebookAsASupplement() {
+      return this.$store.getters['libraries/getCurrentLibrarySettings']?.ebookAsASupplement ?? false;
     },
     libraryId() {
       return this.libraryItem.libraryId

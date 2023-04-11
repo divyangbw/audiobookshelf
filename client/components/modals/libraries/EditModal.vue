@@ -105,6 +105,7 @@ export default {
           disableWatcher: false,
           skipMatchingMediaWithAsin: false,
           skipMatchingMediaWithIsbn: false,
+          ebookAsASupplement: false,
           autoScanCronExpression: null
         }
       }

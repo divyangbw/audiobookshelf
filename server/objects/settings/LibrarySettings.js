@@ -6,6 +6,7 @@ class LibrarySettings {
     this.disableWatcher = false
     this.skipMatchingMediaWithAsin = false
     this.skipMatchingMediaWithIsbn = false
+    this.ebookAsASupplement = false
     this.autoScanCronExpression = null
 
     if (settings) {
@@ -18,6 +19,7 @@ class LibrarySettings {
     this.disableWatcher = !!settings.disableWatcher
     this.skipMatchingMediaWithAsin = !!settings.skipMatchingMediaWithAsin
     this.skipMatchingMediaWithIsbn = !!settings.skipMatchingMediaWithIsbn
+    this.ebookAsASupplement = !!settings.ebookAsASupplement
     this.autoScanCronExpression = settings.autoScanCronExpression || null
   }
 
@@ -27,6 +29,7 @@ class LibrarySettings {
       disableWatcher: this.disableWatcher,
       skipMatchingMediaWithAsin: this.skipMatchingMediaWithAsin,
       skipMatchingMediaWithIsbn: this.skipMatchingMediaWithIsbn,
+      ebookAsASupplement: this.ebookAsASupplement,
       autoScanCronExpression: this.autoScanCronExpression
     }
   }
